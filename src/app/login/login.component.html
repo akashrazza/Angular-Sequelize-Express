@@ -1,0 +1,64 @@
+<mat-grid-list cols="4" rowHeight="1:1">
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+        <mat-card class="dashboard-card table-container">
+
+            <h1 class="mat-h1">Login</h1>
+            <form [formGroup]="loginForm">
+                <div>
+                    <mat-form-field appearance="legacy" class="full-width">
+                        <mat-label>Username</mat-label>
+                        <input type="text" matInput formControlName="user" placeholder="Username">
+                        <mat-hint>Entre Username</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div>
+
+                    <mat-form-field appearance="legacy" class="full-width">
+                        <mat-label>Password</mat-label>
+                        <input type="text" matInput formControlName="password" placeholder="Password">
+                        <mat-hint>Entre password</mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <button mat-raised-button color="primary" (click)="onSubmit()">Login</button>
+            </form>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+        <mat-card class="dashboard-card table-container">
+            <h1 class="mat-h1">Signup</h1>
+            <form [formGroup]="Signupform">
+                <div>
+                    <mat-form-field appearance="legacy" class="full-width">
+                        <mat-label>Username</mat-label>
+                        <input type="text" matInput formControlName="user" placeholder="Username" required>
+                        <mat-hint>Entre Username</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div>
+
+                    <mat-form-field appearance="legacy" class="full-width">
+                        <mat-label>Password</mat-label>
+                        <input type="text" matInput formControlName="password" placeholder="Password" required>
+                        <mat-hint>Entre password</mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <div>
+
+                    <mat-form-field appearance="legacy" class="full-width">
+                        <mat-label>Role</mat-label>
+                        <mat-select formControlName="role" placeholder="Role" required>
+                            <mat-option value="user">User</mat-option>
+                            <mat-option value="admin">Admin</mat-option>
+                        </mat-select>
+                        <mat-hint>Entre Role</mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <button mat-raised-button color="primary" (click)="onSubmitSignupForm()">Signup</button>
+            </form>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+{{UserCredentialfalg}}

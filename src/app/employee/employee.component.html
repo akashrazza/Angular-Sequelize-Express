@@ -1,0 +1,184 @@
+<mat-grid-list cols="4" rowHeight="1:1.2" gutterSize="20px" class="grid-container ">
+
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+
+        <mat-card class="dashboard-card table-container">
+            <h1 class="">Total Salary : {{calculatedSalary}}</h1>
+            <form [formGroup]="TotalSalaryForm">
+                <mat-grid-list cols="4" rowHeight="100px">
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Basic</mat-label>
+                            <input type="number" matInput min=0 formControlName="basic" placeholder="Basic">
+                            <mat-hint>Basic Salary</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>HRA</mat-label>
+                            <input type="number" matInput min=0 formControlName="hra" placeholder="HRA">
+                            <mat-hint>Entre HRA</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>DA</mat-label>
+                            <input type="number" matInput min=0 formControlName="da" placeholder="DA">
+                            <mat-hint>Entre DA</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>IT</mat-label>
+                            <input type="number" matInput min=0 formControlName="it" placeholder="IT">
+                            <mat-hint>Entre IT</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>PF</mat-label>
+                            <input type="number" matInput min=0 formControlName="pf" placeholder="PF">
+                            <mat-hint>Entre PF</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <button mat-raised-button color="primary" (click)="onSubmitTotalSalaryForm()">Calculate
+                            Salary</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </form>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+        <mat-card class="dashboard-card table-container">
+            <h1 class="mat-h1">Employee</h1>
+            <form [formGroup]="EmployeeForm">
+                <mat-grid-list cols="4" rowHeight="100px">
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Id</mat-label>
+                            <input type="number" matInput min=0 formControlName="id" placeholder="Id" required>
+                            <mat-hint>Id</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Name</mat-label>
+                            <input type="text" matInput min=0 formControlName="name" placeholder="name" required>
+                            <mat-hint>Entre Name</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Department</mat-label>
+                            <input type="text" matInput min=0 formControlName="dept" placeholder="Department" required>
+                            <mat-hint>Entre Department</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Designation</mat-label>
+                            <input type="text" matInput min=0 formControlName="designation" placeholder="Designation"
+                                required>
+                            <mat-hint>Entre Designation</mat-hint>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+
+                    <mat-grid-tile [colspan]=2 [rowspan]=1>
+                        <button *ngIf="updateButton==false" mat-raised-button color="primary"
+                            (click)="onEmployeeFormSubmit()">Add Employee</button>
+                        <button *ngIf="updateButton" mat-raised-button color="primary" (click)="updateEmployee()">Update
+                            Employee</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </form>
+        </mat-card>
+
+
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+        <mat-card class="dashboard-card table-container">
+            <h1 class="mat-display-1">Employee Table</h1>
+            <mat-grid-list cols=5 rowHeight="80px">
+                <mat-grid-tile [colspan]=1 [rowspan]=1>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Provide Id</mat-label>
+                        <input type="number" matInput min=0 [(ngModel)]="idToSearch" placeholder="Id">
+                        <mat-hint>Search</mat-hint>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=1 [rowspan]=1>
+                    <button mat-raised-button color="primary" (click)="SearchByID()"> Search </button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=1 [rowspan]=1>
+                    <button mat-raised-button color="primary" (click)="GetAllEmployee()"> Get All </button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=1 [rowspan]=1>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Provide Name</mat-label>
+                        <input type="text" matInput min=0 [(ngModel)]="nameToSearch" placeholder="Name">
+                        <mat-hint>Search</mat-hint>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=1 [rowspan]=1>
+                    <button mat-raised-button color="primary" (click)="SearchByName()"> Search </button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div style="height: 150px;overflow: scroll;">
+                <table mat-table [dataSource]="Employee_list" class="mat-elevation-z8"
+                    style="width: 100%;text-align: start;">
+
+
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> Id. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <!-- Department Column -->
+                    <ng-container matColumnDef="dept">
+                        <th mat-header-cell *matHeaderCellDef> Department </th>
+                        <td mat-cell *matCellDef="let element"> {{element.dept}} </td>
+                    </ng-container>
+
+                    <!-- Designation Column -->
+                    <ng-container matColumnDef="designation">
+                        <th mat-header-cell *matHeaderCellDef> Designation </th>
+                        <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+                    </ng-container>
+
+                    <!-- Created At Column -->
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef> Created At </th>
+                        <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+                    </ng-container>
+
+                    <!-- Updated At Column -->
+                    <ng-container matColumnDef="updatedAt">
+                        <th mat-header-cell *matHeaderCellDef> Updated At </th>
+                        <td mat-cell *matCellDef="let element"> {{element.updatedAt | date}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Button">
+                        <th mat-header-cell class="table-header" *matHeaderCellDef> Actions </th>
+                        <td mat-cell *matCellDef="let element">
+                            <mat-icon color="primary" (click)="getUpdateInstance(element)">edit</mat-icon>
+                            <mat-icon color="warn" (click)="deleteEmployee(element.id)">delete</mat-icon>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

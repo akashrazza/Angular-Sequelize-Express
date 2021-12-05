@@ -1,0 +1,19 @@
+.grid-container {
+    /* margin: 20px; */
+    text-align: center;
+    background-color: #c3e3cd;
+  }
+  
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .table-container{
+    
+    
+    background-color: #5ed5b44d;
+  }
